@@ -32,7 +32,7 @@ function solve24(numStr){
   //**************************x*/y**i.e. '1234'
   else if((a*b*c*d) === 24) termStr = `${a}*${b}*${c}*${d}`;
   //**************************(x/y)*z**i.e. '4788'
-  else if(((b-c/d)*a) === 24) termStr = `(${c}-${b}/${d})*${a}`;
+  else if(((b-c/d)*a) === 24) termStr = `(${b}-${c}/${d})*${a}`;
   //**************************(a*c)/(d-b)**i.e. '6789
   else if(((a*c)/(d-b)) === 24) termStr = `(${a}*${c})/(${d}-${b})`;
   else return bool;
