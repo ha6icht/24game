@@ -28,7 +28,58 @@ h1{
   border-radius: 4px;
   color: black;
 }
+#plus-term{
+  display: table-row;
+}
+#times-term{
+  display: none;
+}
+#factorial-term{
+  display: table-row;
+}
+#distributive-term{
+  display: none;
+}
+.is-true{
+  text-transform: uppercase;
+}
+#plus-term-is-true{
+  color: red;
+  animation-name: blink;
+  animation-duration: 2100ms;
+  animation-iteration-count: infinite;
+  /*transition-property: color
+  transition-duration: 3000ms;*/
+}
+#times-term-is-true{
+  color: red;
+  animation-name: blink;
+  animation-duration: 2100ms;
+  animation-iteration-count: infinite;
+  /*transition-property: color
+  transition-duration: 3000ms;*/
+}
+#factorial-term-is-true{
+  color: red;
+  animation-name: blink;
+  animation-duration: 2100ms;
+  animation-iteration-count: infinite;
+  /*transition-property: color
+  transition-duration: 3000ms;*/
+}
+#distributive-term-is-true{
+  color: red;
+  animation-name: blink;
+  animation-duration: 2100ms;
+  animation-iteration-count: infinite;
+  /*transition-property: color
+  transition-duration: 3000ms;*/
+}
 button{
   margin-bottom: 22px;
   padding: 6px;
 }
+
+@keyframes blink {
+   from{opacity: 1;} to {opacity: 0;}
+}  
