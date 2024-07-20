@@ -29,13 +29,13 @@ h1{
   color: black;
 }
 #plus-term{
-  display: table-row;
+  display: none;
 }
 #times-term{
   display: none;
 }
 #factorial-term{
-  display: table-row;
+  display: none;
 }
 #distributive-term{
   display: none;
