@@ -46,7 +46,7 @@ h1{
 #plus-term-is-true{
   color: red;
   animation-name: blink;
-  animation-duration: 2100ms;
+  animation-duration: 3200ms;
   animation-iteration-count: infinite;
   /*transition-property: color
   transition-duration: 3000ms;*/
@@ -54,7 +54,7 @@ h1{
 #times-term-is-true{
   color: red;
   animation-name: blink;
-  animation-duration: 2100ms;
+  animation-duration: 3200ms;
   animation-iteration-count: infinite;
   /*transition-property: color
   transition-duration: 3000ms;*/
@@ -62,7 +62,7 @@ h1{
 #factorial-term-is-true{
   color: red;
   animation-name: blink;
-  animation-duration: 2100ms;
+  animation-duration: 3200ms;
   animation-iteration-count: infinite;
   /*transition-property: color
   transition-duration: 3000ms;*/
@@ -70,7 +70,7 @@ h1{
 #distributive-term-is-true{
   color: red;
   animation-name: blink;
-  animation-duration: 2100ms;
+  animation-duration: 3200ms;
   animation-iteration-count: infinite;
   /*transition-property: color
   transition-duration: 3000ms;*/
@@ -81,5 +81,5 @@ button{
 }
 
 @keyframes blink {
-   from{opacity: 1;} to {opacity: 0;}
+   from{opacity: 0;} to {opacity: 1;}
 }  
