@@ -5,7 +5,34 @@ function compareNumbers (a,b){
   return a-b
 }
 
-function solve24(numStr){
+function delay(numOfTerm, a, b, c, d){
+  console.log("delay parameters: ",numOfTerm, a, b, c, d);
+  let termStr = '';
+
+  switch(numOfTerm){
+    case 0:
+      termStr = `${a}+${b}+${c}+${d}`;
+      break;
+    case 1:
+      termStr = `${a}*${b}*${c}*${d}`;
+      console.log("case 1: ",termStr);
+      break;
+    case 2:
+      termStr =  `(${b}-${c}/${d})*${a}`;
+      break;
+    case 3:
+      termStr =  `(${a}*${c})/(${d}-${b})`;
+      break;
+    default:
+      console.error("setTimeout working | numOfTerm: ", numOfTerm);
+  }
+  /*if(numOfTerm === 0) termStr = `${a}+${b}+${c}+${d}`;
+  else if(numOfTerm === 1) termStr = `${a}*${b}*${c}*${d}`;
+  else console.error("setTimeout working | numOfTerm: ", numOfTerm);*/
+  return termStr;
+}
+
+async function solve24(numStr){
   const NUM_ARR = numStr.split('');
   //const NUM_ARR = [6,9,8,7];
   console.log("solve24() NUM_ARR:",NUM_ARR);
@@ -28,15 +55,29 @@ function solve24(numStr){
   const c = toSort[2];
   const d = toSort[3];
   //**************************x+-y**i.e. '2598'
-  if((a+b+c+d) === 24) termStr = `${a}+${b}+${c}+${d}`;
+  if((a+b+c+d) === 24){
+    termStr = delay(0,a,b,c,d);
+    setTimeout(1000);
+  }
   //**************************x*/y**i.e. '1234'
-  else if((a*b*c*d) === 24) termStr = `${a}*${b}*${c}*${d}`;
+  else if((a*b*c*d) === 24){
+    termStr = delay(1,a,b,c,d);
+    setTimeout(1000);
+  }
   //**************************(x/y)*z**i.e. '4788'
-  else if(((b-c/d)*a) === 24) termStr = `(${b}-${c}/${d})*${a}`;
+  else if(((b-c/d)*a) === 24){
+    termStr = delay(2,a,b,c,d);
+    setTimeout(1000);
+  }
   //**************************(a*c)/(d-b)**i.e. '6789
-  else if(((a*c)/(d-b)) === 24) termStr = `(${a}*${c})/(${d}-${b})`;
+  else if(((a*c)/(d-b)) === 24){
+    termStr = delay(3,a,b,c,d);
+    setTimeout(1000);
+  }
   else return bool;
 
+  //setTimeout(() => console.log("setTimeout: ",termStr),1000);
+  //console.log("case 1: ",termStr);
   return termStr;
   //return true;
 }
