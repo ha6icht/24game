@@ -62,6 +62,8 @@ function solve24(numStr){
       return array[index] = parseInt(element);
     });
     //console.log(NUM_ARR);
+
+    //*** Is sort necessary? ****
     toSort.sort((a,b) => a-b);
     console.log("sorted Array (toSort): ",toSort);
 
@@ -106,12 +108,16 @@ function solve24(numStr){
 }
 
 function getNumberTerm(){
-  
+  // Delay time of function solve24() call
+  const MS = 1000;
+
+  // Constants of div tag declartion
   const GAME_1 = document.getElementById('game-1');
   const GAME_2 = document.getElementById('game-2');
   const GAME_3 = document.getElementById('game-3');
   const GAME_4 = document.getElementById('game-4');
-  
+
+  // Constants of instatiation of text between tags
   const GAME_1_NUMBER_STRING = GAME_1.innerHTML;
   const GAME_2_NUMBER_STRING = GAME_2.innerHTML;
   const GAME_3_NUMBER_STRING = GAME_3.innerHTML;
@@ -146,8 +152,10 @@ function getNumberTerm(){
   //delay(1000);
   GAME_ID.innerHTML = '';
   //delay(1000);
-  setTimeout(() => GAME_ID.innerHTML = solve24(STRING_NUMBERS), 1000);
-
+  console.log("Wait starts...");
+  console.log('delaying for ' + MS + ' ms');
+  setTimeout(() => GAME_ID.innerHTML = solve24(STRING_NUMBERS), MS);
+  console.log("...Wait ends");
   //console.log(solve24(STRING_NUMBERS));
   //console.log(STRING_NUMBERS);
 }
