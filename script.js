@@ -5,7 +5,8 @@ function compareNumbers (a,b){
   return a-b
 }
 
-/*async*/ function delay(ms){
+//*** not Necessary!!
+/*async*/ /*function delay(ms){
   console.log("Wait starts...");
   console.log('delaying for ' + ms + ' ms');
 
@@ -19,7 +20,7 @@ function compareNumbers (a,b){
     now = Date.now();
   }while (now - START < ms);
   console.log("...Wait ends");
-}
+}*/
 
 function getTerm(numOfTerm, a, b, c, d){
   console.log("getTerm parameters: ",numOfTerm, a, b, c, d);
@@ -144,8 +145,8 @@ function getNumberTerm(){
   //return STRING_NUMBERS;
   //delay(1000);
   GAME_ID.innerHTML = '';
-  delay(1000);
-  GAME_ID.innerHTML = solve24(STRING_NUMBERS);
+  //delay(1000);
+  setTimeout(() => GAME_ID.innerHTML = solve24(STRING_NUMBERS), 1000);
 
   //console.log(solve24(STRING_NUMBERS));
   //console.log(STRING_NUMBERS);
