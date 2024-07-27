@@ -87,13 +87,14 @@ function solve24(numStr){
 
     //*** Is sort necessary? ****
     toSort.sort((a,b) => a-b);
-    console.log("sorted Array (toSort): ",toSort);
+    //console.log("sorted Array (toSort): ",toSort);
 
     const a = toSort[0];
     const b = toSort[1];
     const c = toSort[2];
     const d = toSort[3];
-    //**************************x+-y**i.e. '2598'
+    //**************************x+-y**i.e. '2598
+    console.log('2598');
     if((a+b+c+d) === 24){
       //delay(2000);
       //termStr = getTerm(0,a,b,c,d);
@@ -116,6 +117,7 @@ function solve24(numStr){
       
     }
     //**************************x*/y**i.e. '1234'
+    console.log('1234');
     if((a*b*c*d) === 24){
       //delay(1000);
       //termStr = getTerm(1,a,b,c,d);
@@ -137,6 +139,7 @@ function solve24(numStr){
       countFalse++;
     }
     //**************************(x/y)*z**i.e. '4788'
+    console.log('4788');
     if(((b-c/d)*a) === 24){
       //delay(2000);
       //termStr = getTerm(2,a,b,c,d);
@@ -158,6 +161,7 @@ function solve24(numStr){
       countFalse++;
     }
     //**************************(a*c)/(d-b)**i.e. '6789
+    console.log('6789');
     if(((a*c)/(d-b)) === 24){
       //delay(2000);
       //termStr = getTerm(3,a,b,c,d);
