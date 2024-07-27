@@ -11,12 +11,12 @@ GAME_1.focus();
 
 let bool = true;
 
-function compareNumbers (a,b){
+/*function compareNumbers (a,b){
   return a-b
-}
+}*/
 
 //*** not Necessary!?!
-/*async*/ function delay(ms){
+/*async*/ /*function delay(ms){
   console.log("Wait starts...");
   console.log('delaying for ' + ms + ' ms');
 
@@ -30,9 +30,9 @@ function compareNumbers (a,b){
     now = Date.now();
   }while (now - START < ms);
   console.log("...Wait ends");
-}
+}*/
 
-function getTerm(numOfTerm, a, b, c, d){
+/*function getTerm(numOfTerm, a, b, c, d){
   console.log("getTerm parameters: ",numOfTerm, a, b, c, d);
   let getTermStr = '';
 
@@ -56,7 +56,7 @@ function getTerm(numOfTerm, a, b, c, d){
   }
 
   return getTermStr;
-}
+}*/
 
 function solve24(numStr){
   const NUM_ARR = numStr !== undefined ? numStr.split(''):false;
@@ -77,7 +77,7 @@ function solve24(numStr){
   let toSort = [];
   //let termStr = '';
   //let bool = false;
-  let countWrong = 0;
+  let countFalse = 0;
   
   if(NUM_ARR.length === 4){
     toSort = NUM_ARR.map((element,index,array)=>{
@@ -112,7 +112,7 @@ function solve24(numStr){
       PLUS_TERM_IS_TRUE.style.animationIterationCount = '0';
       //delay(2000);
       setTimeout(()=>PLUS_TERM.style.display = 'none',MS);
-      countWrong++;
+      countFalse++;
       
     }
     //**************************x*/y**i.e. '1234'
@@ -134,7 +134,7 @@ function solve24(numStr){
       TIMES_TERM_IS_TRUE.style.animationIterationCount = '0';
       //delay(2000);
       setTimeout(()=>TIMES_TERM.style.display = 'none', MS);
-      countWrong++;
+      countFalse++;
     }
     //**************************(x/y)*z**i.e. '4788'
     if(((b-c/d)*a) === 24){
@@ -155,7 +155,7 @@ function solve24(numStr){
       FACTORIAL_TERM_IS_TRUE.style.animationIterationCount = '0';
       //delay(2000);
       setTimeout(()=>FACTORIAL_TERM.style.display = 'none',MS);
-      countWrong++;
+      countFalse++;
     }
     //**************************(a*c)/(d-b)**i.e. '6789
     if(((a*c)/(d-b)) === 24){
@@ -176,7 +176,7 @@ function solve24(numStr){
       DISTRIBUTIVE_TERM_IS_TRUE.style.animationIterationCount = '0';
       //delay(2000);
       setTimeout(()=>DISTRIBUTIVE_TERM.style.display = 'none',MS);
-      countWrong++;
+      countFalse++;
     }
     /*else{
       //termStr = false;
@@ -193,7 +193,7 @@ function solve24(numStr){
   //return true;
   bool = false;
   //setTimeout(() => location.reload(),10000)
-  setTimeout(()=>countWrong === 4? GAME_ID.innerHTML = 'You Lose!': GAME_ID.innerHTML = 'You Win!', 4000);
+  setTimeout(()=>countFalse === 4? GAME_ID.innerHTML = 'You Lose!': GAME_ID.innerHTML = 'You Win!', 4000);
   BUTTON_GET_TWENTY_FOUR.innerHTML = "Refresh";
 }
 
@@ -206,23 +206,6 @@ function getNumberTerm(){
   //const GAME_2 = document.getElementById('game-2');
   //const GAME_3 = document.getElementById('game-3');
   //const GAME_4 = document.getElementById('game-4');
-
-  /*GAME_1.addEventListener('keydown', () => {
-    GAME_1.setAttribute('contenteditable', 'false');
-    GAME_2.focus();
-  });
-  GAME_2.addEventListener('keydown', () => {
-    GAME_2.setAttribute('contenteditable', 'false');
-    GAME_3.focus();
-  });
-  GAME_3.addEventListener('keydown', () => {
-    GAME_3.setAttribute('contenteditable', 'false');
-    GAME_4.focus();
-  });
-  GAME_4.addEventListener('keydown', () => {
-    GAME_4.setAttribute('contenteditable', 'false');
-    BUTTON_GET_TWENTY_FOUR.focus();
-  });*/
   
   // Constants of instatiation of text between tags
   const GAME_1_NUMBER_STRING = GAME_1.innerHTML;
@@ -254,21 +237,11 @@ function getNumberTerm(){
   const NUMBER_STRING_3 = GAME_3_BOOL ? GAME_3_NUMBER_STRING:false;
   const NUMBER_STRING_4 = GAME_4_BOOL ? GAME_4_NUMBER_STRING:false;
 
-  const STRING_NUMBERS = (NUMBER_STRING_1 && NUMBER_STRING_1.length === 1 && NUMBER_STRING_2 && NUMBER_STRING_2.length === 1 && NUMBER_STRING_3 && NUMBER_STRING_3.length === 1 && NUMBER_STRING_4 && NUMBER_STRING_4.length === 1)?NUMBER_STRING_1+NUMBER_STRING_2+NUMBER_STRING_3+NUMBER_STRING_4:alert("NaN! Numbers only one digit!");
-  //return STRING_NUMBERS;
-  //delay(1000);
-  //GAME_ID.innerHTML = '';
-  //delay(1000);
-  /*console.log("Wait starts...");
-  console.log('delaying for ' + MS + ' ms');
-  setTimeout(() => GAME_ID.innerHTML = solve24(STRING_NUMBERS), MS);
-  console.log("...Wait ends");*/
-  //console.log(solve24(STRING_NUMBERS));
-  //console.log(STRING_NUMBERS);
+  const STRING_NUMBERS = (NUMBER_STRING_1 && NUMBER_STRING_1.length === 1 && NUMBER_STRING_2 && NUMBER_STRING_2.length === 1 && NUMBER_STRING_3 && NUMBER_STRING_3.length === 1 && NUMBER_STRING_4 && NUMBER_STRING_4.length === 1)?NUMBER_STRING_1+NUMBER_STRING_2+NUMBER_STRING_3+NUMBER_STRING_4:false;
 
-  //const STRING_NUMBERS = GAME_1.innerHTML + GAME_2.innerHTML + GAME_3.innerHTML + GAME_4.innerHTML;
-  solve24(STRING_NUMBERS);
+  STRING_NUMBERS !== false?solve24(STRING_NUMBERS):location.reload(alert('Not enough digits! (It must have for digits!!) || NaN!'));
 }
+
 function getReload(){
   bool = true;
   location.reload();
