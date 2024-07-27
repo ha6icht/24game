@@ -29,6 +29,9 @@ h1{
   border-radius: 4px;
   color: black;
 }
+div table{
+  margin-top: 22px;
+}
 /*#plus-term{
   display: none;/*table-row*/
 /*}
@@ -83,6 +86,10 @@ h1{
 button{
   margin-bottom: 22px;
   padding: 6px;
+}
+
+#game{
+  margin-top: 22px;
 }
 
 @keyframes blink {
