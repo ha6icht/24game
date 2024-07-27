@@ -1,12 +1,22 @@
 const BUTTON_GET_TWENTY_FOUR = document.getElementById('get-twenty-four');
 const GAME_ID = document.getElementById('game');
 
+// Constants of div tag declartion
+const GAME_1 = document.getElementById('game-1');
+const GAME_2 = document.getElementById('game-2');
+const GAME_3 = document.getElementById('game-3');
+const GAME_4 = document.getElementById('game-4');
+
+GAME_1.focus();
+
+let bool = true;
+
 function compareNumbers (a,b){
   return a-b
 }
 
-//*** not Necessary!!
-/*async*/ /*function delay(ms){
+//*** not Necessary!?!
+/*async*/ function delay(ms){
   console.log("Wait starts...");
   console.log('delaying for ' + ms + ' ms');
 
@@ -20,7 +30,7 @@ function compareNumbers (a,b){
     now = Date.now();
   }while (now - START < ms);
   console.log("...Wait ends");
-}*/
+}
 
 function getTerm(numOfTerm, a, b, c, d){
   console.log("getTerm parameters: ",numOfTerm, a, b, c, d);
@@ -53,9 +63,21 @@ function solve24(numStr){
   //const NUM_ARR = [6,9,8,7];
   console.log("solve24() NUM_ARR:",NUM_ARR);
 
+  const MS = 4000;
+
+  const PLUS_TERM = document.getElementById('plus-term');
+  const PLUS_TERM_IS_TRUE = document.getElementById('plus-term-is-true');
+  const TIMES_TERM = document.getElementById('times-term');
+  const TIMES_TERM_IS_TRUE = document.getElementById('times-term-is-true');
+  const FACTORIAL_TERM = document.getElementById('factorial-term');
+  const FACTORIAL_TERM_IS_TRUE = document.getElementById('factorial-term-is-true');
+  const DISTRIBUTIVE_TERM = document.getElementById('distributive-term');
+  const DISTRIBUTIVE_TERM_IS_TRUE = document.getElementById('distributive-term-is-true');
+
   let toSort = [];
-  let termStr = '';
+  //let termStr = '';
   //let bool = false;
+  let countWrong = 0;
   
   if(NUM_ARR.length === 4){
     toSort = NUM_ARR.map((element,index,array)=>{
@@ -74,49 +96,134 @@ function solve24(numStr){
     //**************************x+-y**i.e. '2598'
     if((a+b+c+d) === 24){
       //delay(2000);
-      termStr = getTerm(0,a,b,c,d);
+      //termStr = getTerm(0,a,b,c,d);
       //setTimeout(1000);
+      //PLUS_TERM.style.display = 'table-row';
+      //delay(1000);
+      PLUS_TERM_IS_TRUE.innerHTML = 'true';
+      PLUS_TERM_IS_TRUE.style.color = 'green';
+      PLUS_TERM_IS_TRUE.style.animationIterationCount = '0';
+    }
+    else{
+      //PLUS_TERM.style.display = 'table-row';
+      //delay(1000);
+      PLUS_TERM_IS_TRUE.innerHTML = 'false';
+      PLUS_TERM_IS_TRUE.style.color = 'red';
+      PLUS_TERM_IS_TRUE.style.animationIterationCount = '0';
+      //delay(2000);
+      setTimeout(()=>PLUS_TERM.style.display = 'none',MS);
+      countWrong++;
+      
     }
     //**************************x*/y**i.e. '1234'
-    else if((a*b*c*d) === 24){
-      //delay(2000);
-      termStr = getTerm(1,a,b,c,d);
+    if((a*b*c*d) === 24){
+      //delay(1000);
+      //termStr = getTerm(1,a,b,c,d);
       //setTimeout(1000);
+      //TIMES_TERM.style.display = 'table-row';
+      //delay(1000);
+      TIMES_TERM_IS_TRUE.innerHTML = 'true';
+      TIMES_TERM_IS_TRUE.style.color = 'green';
+      TIMES_TERM_IS_TRUE.style.animationIterationCount = '0';
+    }
+    else{
+      //TIMES_TERM.style.display = 'table-row';
+      //delay(1000);
+      TIMES_TERM_IS_TRUE.innerHTML = 'false';
+      TIMES_TERM_IS_TRUE.style.color = 'red';
+      TIMES_TERM_IS_TRUE.style.animationIterationCount = '0';
+      //delay(2000);
+      setTimeout(()=>TIMES_TERM.style.display = 'none', MS);
+      countWrong++;
     }
     //**************************(x/y)*z**i.e. '4788'
-    else if(((b-c/d)*a) === 24){
+    if(((b-c/d)*a) === 24){
       //delay(2000);
-      termStr = getTerm(2,a,b,c,d);
+      //termStr = getTerm(2,a,b,c,d);
       //setTimeout(1000);
+      //FACTORIAL_TERM.style.display = 'table-row';
+      //delay(1000);
+      FACTORIAL_TERM_IS_TRUE.innerHTML = 'true';
+      FACTORIAL_TERM_IS_TRUE.style.color = 'green';
+      FACTORIAL_TERM_IS_TRUE.style.animationIterationCount = '0';
+    }
+    else{
+      //FACTORIAL_TERM.style.display = 'table-row';
+      //delay(1000);
+      FACTORIAL_TERM_IS_TRUE.innerHTML = 'false';
+      FACTORIAL_TERM_IS_TRUE.style.color = 'red';
+      FACTORIAL_TERM_IS_TRUE.style.animationIterationCount = '0';
+      //delay(2000);
+      setTimeout(()=>FACTORIAL_TERM.style.display = 'none',MS);
+      countWrong++;
     }
     //**************************(a*c)/(d-b)**i.e. '6789
-    else if(((a*c)/(d-b)) === 24){
+    if(((a*c)/(d-b)) === 24){
       //delay(2000);
-      termStr = getTerm(3,a,b,c,d);
+      //termStr = getTerm(3,a,b,c,d);
       //setTimeout(1000);
+      //DISTRIBUTIVE_TERM.style.display = 'table-row';
+      //delay(1000);
+      DISTRIBUTIVE_TERM_IS_TRUE.innerHTML = 'true';
+      DISTRIBUTIVE_TERM_IS_TRUE.style.color = 'green';
+      DISTRIBUTIVE_TERM_IS_TRUE.style.animationIterationCount = '0';
     }
-    else termStr = false;
+    else{
+      //DISTRIBUTIVE_TERM.style.display = 'table-row';
+      //delay(1000);
+      DISTRIBUTIVE_TERM_IS_TRUE.innerHTML = 'false';
+      DISTRIBUTIVE_TERM_IS_TRUE.style.color = 'red';
+      DISTRIBUTIVE_TERM_IS_TRUE.style.animationIterationCount = '0';
+      //delay(2000);
+      setTimeout(()=>DISTRIBUTIVE_TERM.style.display = 'none',MS);
+      countWrong++;
+    }
+    /*else{
+      //termStr = false;
+      console.log("Not enough numbers! output NUM_ARR:", NUM_ARR);
+    }*/
   } else {
-    termStr = false;
+    //termStr = false;
     console.log("Not enough numbers! output NUM_ARR:", NUM_ARR);
   }
 
   //setTimeout(() => console.log("setTimeout: ",termStr),1000);
   //console.log("case 1: ",termStr);
-  return termStr;
+  //return termStr;
   //return true;
+  bool = false;
+  //setTimeout(() => location.reload(),10000)
+  setTimeout(()=>countWrong === 4? GAME_ID.innerHTML = 'You Lose!': GAME_ID.innerHTML = 'You Win!', 4000);
+  BUTTON_GET_TWENTY_FOUR.innerHTML = "Refresh";
 }
 
 function getNumberTerm(){
-  // Delay time of function solve24() call
-  const MS = 1000;
+  //*** Delay time of function solve24() call
+  //const MS = 1000;
 
   // Constants of div tag declartion
-  const GAME_1 = document.getElementById('game-1');
-  const GAME_2 = document.getElementById('game-2');
-  const GAME_3 = document.getElementById('game-3');
-  const GAME_4 = document.getElementById('game-4');
+  //const GAME_1 = document.getElementById('game-1');
+  //const GAME_2 = document.getElementById('game-2');
+  //const GAME_3 = document.getElementById('game-3');
+  //const GAME_4 = document.getElementById('game-4');
 
+  /*GAME_1.addEventListener('keydown', () => {
+    GAME_1.setAttribute('contenteditable', 'false');
+    GAME_2.focus();
+  });
+  GAME_2.addEventListener('keydown', () => {
+    GAME_2.setAttribute('contenteditable', 'false');
+    GAME_3.focus();
+  });
+  GAME_3.addEventListener('keydown', () => {
+    GAME_3.setAttribute('contenteditable', 'false');
+    GAME_4.focus();
+  });
+  GAME_4.addEventListener('keydown', () => {
+    GAME_4.setAttribute('contenteditable', 'false');
+    BUTTON_GET_TWENTY_FOUR.focus();
+  });*/
+  
   // Constants of instatiation of text between tags
   const GAME_1_NUMBER_STRING = GAME_1.innerHTML;
   const GAME_2_NUMBER_STRING = GAME_2.innerHTML;
@@ -150,16 +257,52 @@ function getNumberTerm(){
   const STRING_NUMBERS = (NUMBER_STRING_1 && NUMBER_STRING_1.length === 1 && NUMBER_STRING_2 && NUMBER_STRING_2.length === 1 && NUMBER_STRING_3 && NUMBER_STRING_3.length === 1 && NUMBER_STRING_4 && NUMBER_STRING_4.length === 1)?NUMBER_STRING_1+NUMBER_STRING_2+NUMBER_STRING_3+NUMBER_STRING_4:alert("NaN! Numbers only one digit!");
   //return STRING_NUMBERS;
   //delay(1000);
-  GAME_ID.innerHTML = '';
+  //GAME_ID.innerHTML = '';
   //delay(1000);
-  console.log("Wait starts...");
+  /*console.log("Wait starts...");
   console.log('delaying for ' + MS + ' ms');
   setTimeout(() => GAME_ID.innerHTML = solve24(STRING_NUMBERS), MS);
-  console.log("...Wait ends");
+  console.log("...Wait ends");*/
   //console.log(solve24(STRING_NUMBERS));
   //console.log(STRING_NUMBERS);
+
+  //const STRING_NUMBERS = GAME_1.innerHTML + GAME_2.innerHTML + GAME_3.innerHTML + GAME_4.innerHTML;
+  solve24(STRING_NUMBERS);
 }
-BUTTON_GET_TWENTY_FOUR.addEventListener('click', getNumberTerm);
+function getReload(){
+  bool = true;
+  location.reload();
+  //GAME_1.focus();
+}
+
+GAME_1.addEventListener('keyup', () => {
+  GAME_1.setAttribute('contenteditable', 'false');
+  GAME_2.focus();
+});
+GAME_2.addEventListener('keyup', () => {
+  GAME_2.setAttribute('contenteditable', 'false');
+  GAME_3.focus();
+});
+GAME_3.addEventListener('keyup', () => {
+  GAME_3.setAttribute('contenteditable', 'false');
+  GAME_4.focus();
+});
+GAME_4.addEventListener('keyup', () => {
+  GAME_4.setAttribute('contenteditable', 'false');
+  BUTTON_GET_TWENTY_FOUR.focus();
+});
+
+//BUTTON_GET_TWENTY_FOUR.addEventListener('click', getNumberTerm);
+BUTTON_GET_TWENTY_FOUR.addEventListener('click', () => {
+  bool?getNumberTerm():getReload();
+});
+/*BUTTON_GET_TWENTY_FOUR.addEventListener( "click", (e) => {
+  getNumberTerm();
+});*/
+
+// console.log(solve24('6789'));
+//BUTTON_GET_TWENTY_FOUR.addEventListener('click', getNumberTerm);
+
 /*BUTTON_GET_TWENTY_FOUR.addEventListener( "click", (e) => {
   getNumberTerm();
 });*/
