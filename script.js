@@ -5,41 +5,45 @@ function compareNumbers (a,b){
   return a-b
 }
 
-function delay(numOfTerm, a, b, c, d){
-  console.log("delay parameters: ",numOfTerm, a, b, c, d);
-  let termStr = '';
+async function delay(ms){
+  console.log('delaying for ' + ms + ' ms');
+  await new Promise(resolve => setTimeout(resolve, ms)); 
+}
+
+function getTerm(numOfTerm, a, b, c, d){
+  console.log("getTerm parameters: ",numOfTerm, a, b, c, d);
+  let getTermStr = '';
 
   switch(numOfTerm){
     case 0:
-      termStr = `${a}+${b}+${c}+${d}`;
+      getTermStr = `(${a}+${b}+${c}+${d})`;
       break;
     case 1:
-      termStr = `${a}*${b}*${c}*${d}`;
-      console.log("case 1: ",termStr);
+      delay(10000);
+      getTermStr = `(${a}*${b}*${c}*${d})`;
+      console.log("case 1: ",getTermStr);
       break;
     case 2:
-      termStr =  `(${b}-${c}/${d})*${a}`;
+      getTermStr =  `(${b}-${c}/${d})*${a}`;
       break;
     case 3:
-      termStr =  `(${a}*${c})/(${d}-${b})`;
+      getTermStr =  `(${a}*${c})/(${d}-${b})`;
       break;
     default:
       console.error("setTimeout working | numOfTerm: ", numOfTerm);
   }
-  /*if(numOfTerm === 0) termStr = `${a}+${b}+${c}+${d}`;
-  else if(numOfTerm === 1) termStr = `${a}*${b}*${c}*${d}`;
-  else console.error("setTimeout working | numOfTerm: ", numOfTerm);*/
-  return termStr;
+
+  return getTermStr;
 }
 
-async function solve24(numStr){
-  const NUM_ARR = numStr.split('');
+function solve24(numStr){
+  const NUM_ARR = numStr !== undefined ? numStr.split(''):false;
   //const NUM_ARR = [6,9,8,7];
   console.log("solve24() NUM_ARR:",NUM_ARR);
 
   let toSort = [];
   let termStr = '';
-  let bool = false;
+  //let bool = false;
   
   if(NUM_ARR.length === 4){
     toSort = NUM_ARR.map((element,index,array)=>{
@@ -48,33 +52,37 @@ async function solve24(numStr){
     //console.log(NUM_ARR);
     toSort.sort((a,b) => a-b);
     console.log("sorted Array (toSort): ",toSort);
-  } else console.log("Not enough numbers! output NUM_ARR:", NUM_ARR);
 
-  const a = toSort[0];
-  const b = toSort[1];
-  const c = toSort[2];
-  const d = toSort[3];
-  //**************************x+-y**i.e. '2598'
-  if((a+b+c+d) === 24){
-    termStr = delay(0,a,b,c,d);
-    setTimeout(1000);
+    const a = toSort[0];
+    const b = toSort[1];
+    const c = toSort[2];
+    const d = toSort[3];
+    //**************************x+-y**i.e. '2598'
+    if((a+b+c+d) === 24){
+      termStr = getTerm(0,a,b,c,d);
+      //setTimeout(1000);
+    }
+    //**************************x*/y**i.e. '1234'
+    else if((a*b*c*d) === 24){
+      delay(10000);
+      termStr = getTerm(1,a,b,c,d);
+      //setTimeout(1000);
+    }
+    //**************************(x/y)*z**i.e. '4788'
+    else if(((b-c/d)*a) === 24){
+      termStr = getTerm(2,a,b,c,d);
+      //setTimeout(1000);
+    }
+    //**************************(a*c)/(d-b)**i.e. '6789
+    else if(((a*c)/(d-b)) === 24){
+      termStr = getTerm(3,a,b,c,d);
+      //setTimeout(1000);
+    }
+    else termStr = false;
+  } else {
+    termStr = false;
+    console.log("Not enough numbers! output NUM_ARR:", NUM_ARR);
   }
-  //**************************x*/y**i.e. '1234'
-  else if((a*b*c*d) === 24){
-    termStr = delay(1,a,b,c,d);
-    setTimeout(1000);
-  }
-  //**************************(x/y)*z**i.e. '4788'
-  else if(((b-c/d)*a) === 24){
-    termStr = delay(2,a,b,c,d);
-    setTimeout(1000);
-  }
-  //**************************(a*c)/(d-b)**i.e. '6789
-  else if(((a*c)/(d-b)) === 24){
-    termStr = delay(3,a,b,c,d);
-    setTimeout(1000);
-  }
-  else return bool;
 
   //setTimeout(() => console.log("setTimeout: ",termStr),1000);
   //console.log("case 1: ",termStr);
@@ -118,7 +126,7 @@ function getNumberTerm(){
   const NUMBER_STRING_3 = GAME_3_BOOL ? GAME_3_NUMBER_STRING:false;
   const NUMBER_STRING_4 = GAME_4_BOOL ? GAME_4_NUMBER_STRING:false;
 
-  const STRING_NUMBERS = (NUMBER_STRING_1.length === 1 && NUMBER_STRING_1 && NUMBER_STRING_2 && NUMBER_STRING_2.length === 1 && NUMBER_STRING_3 && NUMBER_STRING_3.length === 1 && NUMBER_STRING_4 && NUMBER_STRING_4.length === 1)?NUMBER_STRING_1+NUMBER_STRING_2+NUMBER_STRING_3+NUMBER_STRING_4:alert("NaN! Numbers only one digit!");
+  const STRING_NUMBERS = (NUMBER_STRING_1 && NUMBER_STRING_1.length === 1 && NUMBER_STRING_2 && NUMBER_STRING_2.length === 1 && NUMBER_STRING_3 && NUMBER_STRING_3.length === 1 && NUMBER_STRING_4 && NUMBER_STRING_4.length === 1)?NUMBER_STRING_1+NUMBER_STRING_2+NUMBER_STRING_3+NUMBER_STRING_4:alert("NaN! Numbers only one digit!");
   //return STRING_NUMBERS;
   GAME_ID.innerHTML = "";
   GAME_ID.innerHTML = solve24(STRING_NUMBERS);
