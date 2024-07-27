@@ -5,9 +5,18 @@ function compareNumbers (a,b){
   return a-b
 }
 
-async function delay(ms){
+/*async*/ function delay(ms){
   console.log('delaying for ' + ms + ' ms');
-  await new Promise(resolve => setTimeout(resolve, ms)); 
+  //console.log("Wait starts");
+  //await new Promise(resolve => setTimeout(resolve, ms)); 
+  //console.log("Wait ends");
+
+  //*** delay is WORKING with do ...while loop!
+  const START = Date.now();
+  let now;
+  do{
+    now = Date.now();
+  }while (now - START < ms);
 }
 
 function getTerm(numOfTerm, a, b, c, d){
@@ -19,7 +28,7 @@ function getTerm(numOfTerm, a, b, c, d){
       getTermStr = `(${a}+${b}+${c}+${d})`;
       break;
     case 1:
-      delay(10000);
+      //delay(1000);
       getTermStr = `(${a}*${b}*${c}*${d})`;
       console.log("case 1: ",getTermStr);
       break;
@@ -59,22 +68,25 @@ function solve24(numStr){
     const d = toSort[3];
     //**************************x+-y**i.e. '2598'
     if((a+b+c+d) === 24){
+      delay(2000);
       termStr = getTerm(0,a,b,c,d);
       //setTimeout(1000);
     }
     //**************************x*/y**i.e. '1234'
     else if((a*b*c*d) === 24){
-      delay(10000);
+      delay(2000);
       termStr = getTerm(1,a,b,c,d);
       //setTimeout(1000);
     }
     //**************************(x/y)*z**i.e. '4788'
     else if(((b-c/d)*a) === 24){
+      delay(2000);
       termStr = getTerm(2,a,b,c,d);
       //setTimeout(1000);
     }
     //**************************(a*c)/(d-b)**i.e. '6789
     else if(((a*c)/(d-b)) === 24){
+      delay(2000);
       termStr = getTerm(3,a,b,c,d);
       //setTimeout(1000);
     }
