@@ -42,7 +42,7 @@ h1{
 /*}*/
 .is-true{
   text-transform: uppercase;
-  /*color: orange;*/
+  color: orange;
   animation-name: blink;
   animation-duration: 3200ms;
   animation-iteration-count: infinite;
